@@ -1,0 +1,8 @@
+<view class="cube-player">
+  <canvas type="2d" id="cubeCanvas" class="cube-canvas"></canvas>
+  <view class="controls" wx:if="{{solutionSteps.length > 0}}">
+    <button size="mini" bindtap="reset">Reset</button>
+    <button size="mini" bindtap="play">Play</button>
+    <button size="mini" bindtap="pause">Pause</button>
+  </view>
+</view>

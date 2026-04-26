@@ -1,0 +1,63 @@
+<view class="page">
+  <view class="header">
+    <view class="logo">Cube Solver</view>
+    <view class="tagline">Photo a cube, get the solution</view>
+  </view>
+
+  <view class="cards">
+    <!-- Scan Card -->
+    <view class="card card-scan" bindtap="goScan">
+      <view class="card-icon">
+        <view class="icon-circle scan-circle">
+          <text class="icon-text">📷</text>
+        </view>
+      </view>
+      <view class="card-body">
+        <view class="card-title">Scan Cube</view>
+        <view class="card-desc">Take 6 photos to auto-read colours</view>
+      </view>
+      <view class="card-arrow">›</view>
+    </view>
+
+    <!-- Enter State Card -->
+    <view class="card card-verify" bindtap="goVerify">
+      <view class="card-icon">
+        <view class="icon-circle verify-circle">
+          <text class="icon-text">⌨️</text>
+        </view>
+      </view>
+      <view class="card-body">
+        <view class="card-title">Enter State</view>
+        <view class="card-desc">Type the 54-char state string directly</view>
+      </view>
+      <view class="card-arrow">›</view>
+    </view>
+  </view>
+
+  <!-- Init Section -->
+  <view class="init-card">
+    <view class="init-header">
+      <view class="init-status">
+        <view class="status-dot {{solverReady ? 'ready' : 'pending'}}"></view>
+        <text class="status-text">{{solverReady ? 'Solver Ready' : 'Solver Not Ready'}}</text>
+      </view>
+    </view>
+
+    <button
+      class="init-btn {{solverReady ? 'btn-ready' : (solverInitializing ? 'btn-busy' : 'btn-warn')}}"
+      bindtap="onInitSolver"
+      disabled="{{solverReady || solverInitializing}}"
+    >
+      {{solverReady ? 'Initialized' : (solverInitializing ? 'Initializing...' : 'Initialize Solver')}}
+    </button>
+
+    <view wx:if="{{solverInitializing}}" class="init-progress">
+      <progress percent="{{initPercent}}" show-info stroke-width="3" active color="#07c160" />
+      <text class="init-msg">{{initMessage}} ({{initProgress}}/{{initProgressTotal}})</text>
+    </view>
+
+    <view wx:if="{{!solverReady && !solverInitializing}}" class="init-tip">
+      <text>One-time setup (~30s on first launch). You can also skip this and the app will initialize automatically when needed.</text>
+    </view>
+  </view>
+</view>

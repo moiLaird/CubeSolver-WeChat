@@ -1,0 +1,10 @@
+{
+  "name": "solve",
+  "version": "1.0.0",
+  "description": "Cube solver cloud function",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "latest",
+    "cubejs": "^1.1.0"
+  }
+}

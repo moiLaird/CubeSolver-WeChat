@@ -1,0 +1,85 @@
+<view class="page">
+
+  <!-- CAPTURE PHASE -->
+  <view wx:if="{{phase === 'capture'}}" class="phase-capture">
+    <view class="capture-card">
+      <view class="capture-label">Next face</view>
+      <view class="capture-face">{{FACE_LABELS[currentFaceIndex]}}</view>
+      <view class="capture-hint">Hold the cube steady and tap the button</view>
+      <button class="capture-btn" type="primary" bindtap="takePhoto">Take Photo</button>
+    </view>
+
+    <view class="progress-row">
+      <view class="thumbs">
+        <view wx:for="{{photoPaths}}" wx:key="index" class="thumb {{item ? 'done' : ''}}">
+          <text>{{FACE_NAMES[index]}}</text>
+        </view>
+      </view>
+      <view class="progress-text">{{currentFaceIndex + 1}} / 6</view>
+    </view>
+  </view>
+
+  <!-- REVIEW PHASE -->
+  <view wx:if="{{phase === 'review'}}" class="phase-review">
+    <view class="review-header">
+      <view class="review-title">Review Colours</view>
+      <view class="review-hint">Tap a cell, then pick a colour below to fix it</view>
+    </view>
+
+    <view class="faces-wrap">
+      <view class="face-block" wx:for="{{faces}}" wx:for-index="fi" wx:key="fi">
+        <view class="face-title-wrap">
+          <text class="face-title">{{FACE_NAMES[fi]}}</text>
+        </view>
+        <view class="face-grid">
+          <view
+            class="cell {{selectedCell && selectedCell.faceIndex === fi && selectedCell.cellIndex === ci ? 'selected' : ''}}"
+            wx:for="{{item}}"
+            wx:for-index="ci"
+            wx:key="ci"
+            style="background-color: {{displayColors[fi][ci]}};"
+            bindtap="onSelectCell"
+            data-face="{{fi}}"
+            data-index="{{ci}}"
+          >{{item}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="picker-card">
+      <view class="picker-label">Colour Palette</view>
+      <view class="color-picker-bar">
+        <view
+          class="picker-cell"
+          wx:for="{{COLOR_OPTIONS}}"
+          wx:key="name"
+          style="background-color: {{item.bg}}; {{item.border ? 'border:' + item.border : ''}}"
+          bindtap="onPickColor"
+          data-color="{{item.name}}"
+        >{{item.name}}</view>
+      </view>
+    </view>
+
+    <view class="review-actions">
+      <button class="action-btn primary" bindtap="onSolve">Start Solve</button>
+      <button class="action-btn secondary" bindtap="onRetakeAll">Retake All</button>
+    </view>
+  </view>
+
+  <!-- RESULT PHASE -->
+  <view wx:if="{{phase === 'result'}}" class="phase-result">
+    <view class="result-card">
+      <view class="result-icon">🎉</view>
+      <view class="result-title">Solution Found</view>
+      <view class="result-count">{{steps.length}} moves</view>
+    </view>
+    <view class="steps-card">
+      <view class="steps-label">Steps</view>
+      <view class="steps">{{stepsText}}</view>
+    </view>
+    <cube-player solution-steps="{{steps}}"></cube-player>
+    <button class="action-btn primary" bindtap="onRetakeAll">Solve Another</button>
+  </view>
+
+  <canvas type="2d" id="analyzeCanvas" style="position:fixed;left:-9999px;top:-9999px;width:300px;height:300px;"></canvas>
+</view>

@@ -1,0 +1,14 @@
+# Dependencies
+node_modules/
+
+# Lock file (bloated due to npm bundled)
+package-lock.json
+
+# WeChat Dev Tools local/private settings
+project.private.config.json
+
+# WeChat Dev Tools build output
+miniprogram_npm/
+
+# Source maps
+*.map

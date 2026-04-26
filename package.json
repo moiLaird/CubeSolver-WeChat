@@ -1,0 +1,9 @@
+{
+  "name": "cube_solver",
+  "version": "1.0.0",
+  "description": "3x3 Rubik Cube Solver WeChat Mini Program",
+  "main": "app.js",
+  "dependencies": {
+    "cubejs": "^1.1.0"
+  }
+}
