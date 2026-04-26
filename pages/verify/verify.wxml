@@ -1,0 +1,45 @@
+<view class="page">
+  <view class="header">
+    <view class="title">Enter Cube State</view>
+    <view class="subtitle">54 characters: U R F D L B</view>
+  </view>
+
+  <view class="input-card">
+    <textarea
+      class="input"
+      value="{{inputValue}}"
+      bindinput="onInput"
+      maxlength="54"
+      placeholder="Example: UUUUUUUUURRRRRRRRRFFFFFFFFFDDDDDDDDDLLLLLLLLLBBBBBBBBB"
+    />
+    <view class="input-count {{inputValue.length === 54 ? 'valid' : ''}}">
+      {{inputValue.length}} / 54
+    </view>
+  </view>
+
+  <button class="solve-btn {{solverInitializing ? 'btn-busy' : ''}}" bindtap="onSolve">
+    {{solverInitializing ? 'Initializing...' : 'Solve'}}
+  </button>
+
+  <view wx:if="{{solverInitializing}}" class="init-progress">
+    <progress percent="{{initPercent}}" show-info stroke-width="3" active color="#667eea" />
+    <text class="init-msg">{{initMessage}} ({{initProgress}}/{{initProgressTotal}})</text>
+  </view>
+
+  <view wx:if="{{errorMsg}}" class="error-box">
+    <text class="error-text">{{errorMsg}}</text>
+  </view>
+
+  <view wx:if="{{solved && steps.length > 0}}" class="result-card">
+    <view class="result-header">
+      <text class="result-title">Solution</text>
+      <text class="result-count">{{steps.length}} moves</text>
+    </view>
+    <view class="steps">{{stepsText}}</view>
+  </view>
+
+  <view wx:if="{{solved && steps.length === 0 && !errorMsg}}" class="result-card solved">
+    <view class="result-icon">✅</view>
+    <view class="result-title">Already Solved</view>
+  </view>
+</view>

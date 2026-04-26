@@ -1,0 +1,3 @@
+.cube-player { display: flex; flex-direction: column; align-items: center; margin: 20rpx 0; }
+.cube-canvas { width: 100%; height: 400rpx; background: #fafafa; border-radius: 12rpx; }
+.controls { display: flex; gap: 20rpx; margin-top: 16rpx; }

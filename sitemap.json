@@ -1,0 +1,4 @@
+{
+  "desc": "Sitemap for cube solver mini program",
+  "rules": [{ "action": "allow", "page": "*" }]
+}

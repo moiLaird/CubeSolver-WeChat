@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/scan/scan",
+    "pages/verify/verify"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "Cube Solver",
+    "navigationBarTextStyle": "black"
+  },
+  "permission": {
+    "scope.camera": {
+      "desc": "Need camera access to scan cube faces"
+    }
+  },
+  "cloudfunctionRoot": "cloudfunctions/",
+  "usingComponents": {
+    "cube-player": "/components/cubePlayer/cubePlayer"
+  },
+  "sitemapLocation": "sitemap.json"
+}
