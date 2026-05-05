@@ -196,13 +196,6 @@ Page({
           selectedCell: null
         });
 
-        this.setData({
-          phase: 'review',
-          faces: faces,
-          rawColors: rawColors,
-          displayColors: displayColors,
-          selectedCell: null
-        });
         wx.hideLoading();
       } catch (e) {
         wx.hideLoading();
