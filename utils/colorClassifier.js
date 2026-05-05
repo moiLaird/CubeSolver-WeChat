@@ -74,6 +74,8 @@ function sampleRegion(imageData, width, height, cx, cy, radius, discardRatio) {
   for (let y = y0; y <= y1; y++) {
     const rowOff = y * width * 4;
     for (let x = x0; x <= x1; x++) {
+      const dx = x - cx, dy = y - cy;
+      if (dx * dx + dy * dy > radius * radius) continue;
       const i = rowOff + x * 4;
       pixels.push({ r: d[i], g: d[i+1], b: d[i+2], l: d[i] + d[i+1] + d[i+2] });
     }
