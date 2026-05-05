@@ -61,7 +61,7 @@ Page({
         content: err.message || 'Invalid cube state.',
         showCancel: false
       });
-      this.setData({ errorMsg: err.message || 'Solve failed', steps: [], stepsText: '', solved: true });
+      this.setData({ errorMsg: err.message || 'Solve failed', steps: [], stepsText: '', solved: false });
     }
   }
 });

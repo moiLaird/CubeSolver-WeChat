@@ -40,6 +40,7 @@ function initSolver(onProgress) {
       } catch (err) {
         app.globalData.solverError = err;
         reject(err);
+        initPromise = null;
         return;
       }
 
