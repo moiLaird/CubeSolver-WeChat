@@ -17,7 +17,8 @@
   },
   "cloudfunctionRoot": "cloudfunctions/",
   "usingComponents": {
-    "cube-player": "/components/cubePlayer/cubePlayer"
+    "cube-player": "/components/cubePlayer/cubePlayer",
+    "cube-3d": "/components/cube3d/cube3d"
   },
   "sitemapLocation": "sitemap.json"
 }

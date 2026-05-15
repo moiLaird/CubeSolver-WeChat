@@ -49,7 +49,7 @@ Page({
     wx.showLoading({ title: 'Solving...', mask: true });
     try {
       const steps = await solve(state);
-      this.setData({ steps, stepsText: steps.join(' '), errorMsg: '', solved: true });
+      this.setData({ steps, stepsText: steps.join(' '), errorMsg: '', solved: true, initialState: state });
       wx.hideLoading();
       if (steps.length === 0) {
         wx.showToast({ title: 'Already solved', icon: 'success' });

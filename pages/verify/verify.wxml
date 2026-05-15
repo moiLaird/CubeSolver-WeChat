@@ -36,6 +36,7 @@
       <text class="result-count">{{steps.length}} moves</text>
     </view>
     <view class="steps">{{stepsText}}</view>
+    <cube-3d initial-state="{{initialState}}" solution-steps="{{steps}}"></cube-3d>
   </view>
 
   <view wx:if="{{solved && steps.length === 0 && !errorMsg}}" class="result-card solved">
