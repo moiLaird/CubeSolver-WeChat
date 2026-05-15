@@ -77,7 +77,7 @@
       <view class="steps-label">Steps</view>
       <view class="steps">{{stepsText}}</view>
     </view>
-    <cube-player solution-steps="{{steps}}"></cube-player>
+    <cube-3d initial-state="{{initialState}}" solution-steps="{{steps}}"></cube-3d>
     <button class="action-btn primary" bindtap="onRetakeAll">Solve Another</button>
   </view>
 

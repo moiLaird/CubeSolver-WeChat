@@ -262,7 +262,7 @@ Page({
     wx.showLoading({ title: 'Solving...', mask: true });
     try {
       const steps = await solve(stateStr);
-      this.setData({ phase: 'result', steps, stepsText: steps.join(' '), errorMsg: '' });
+      this.setData({ phase: 'result', steps, stepsText: steps.join(' '), errorMsg: '', initialState: stateStr });
       wx.hideLoading();
     } catch (err) {
       wx.hideLoading();
