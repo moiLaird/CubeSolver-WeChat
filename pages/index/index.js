@@ -18,6 +18,19 @@ Page({
     this.refreshStatus();
   },
 
+  onShareAppMessage() {
+    return {
+      title: 'Cube Solver - 三阶魔方拍照求解',
+      path: '/pages/index/index'
+    };
+  },
+
+  onShareTimeline() {
+    return {
+      title: 'Cube Solver - 三阶魔方拍照求解'
+    };
+  },
+
   refreshStatus() {
     const app = getApp();
     this.setData({ solverReady: app.globalData.solverReady });

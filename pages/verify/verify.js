@@ -15,6 +15,20 @@ Page({
   onLoad() {
     this.ensureSolver();
   },
+
+  onShareAppMessage() {
+    return {
+      title: 'Cube Solver - 三阶魔方拍照求解',
+      path: '/pages/index/index'
+    };
+  },
+
+  onShareTimeline() {
+    return {
+      title: 'Cube Solver - 三阶魔方拍照求解'
+    };
+  },
+
   onProgress(step, total, msg) {
     this.setData({ initProgress: step, initProgressTotal: total, initPercent: Math.round((step / total) * 100), initMessage: msg });
   },
